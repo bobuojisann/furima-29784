@@ -17,7 +17,7 @@
 ### Association
 
 has_many :items
-has_many :purchase
+has_many :purchases
 
 # itemsテーブル
 
@@ -55,7 +55,7 @@ has_one :shipping_address
 ｜postal_cord     ｜string      ｜null: false                   ｜
 ｜prefectures_id  ｜integer     ｜null:false                    ｜
 ｜municipalities  ｜string      ｜null: false                   ｜
-｜address         ｜integer     ｜null: false                   ｜
+｜address         ｜string      ｜null: false                   ｜
 ｜building_name   ｜string      ｜                              ｜
 ｜phone_number    ｜string      ｜null: false                   ｜
 ｜purchase        ｜reference   ｜null: false, foreign_key: true｜
