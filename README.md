@@ -5,9 +5,7 @@
 | Column            | Type   | Options     |
 | --------          | ------ | ----------- |
 | nickname          | string | null: false |
-| birthday_year_id  | date   | null: false |
-| birthday_month_id | date   | null: false |
-| birthday_day_id   | date   | null: false |
+| birthday          | date   | null: false |
 | last_name         | string | null: false |
 |first_name         | string | null: false |
 |last_name_furigana | string | null: false |
