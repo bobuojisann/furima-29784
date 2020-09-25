@@ -25,7 +25,7 @@ has_many :items, through: :users_items
 ｜-----------------｜-----------｜-------------------------------｜
 ｜name             ｜string     ｜null: false                    ｜
 ｜comment          ｜text       ｜null: false                    ｜
-｜category         ｜integer    ｜null: false                    ｜
+｜category_id      ｜integer    ｜null: false                    ｜
 ｜product_condition｜integer    ｜null: false                    ｜
 ｜delivery_fee     ｜integer    ｜null: false                    ｜
 ｜area             ｜string     ｜null: false                    ｜
@@ -36,7 +36,7 @@ has_many :items, through: :users_items
 
 has_many :users_items
 has_many :users, through: :users_items
-has_one_attached:image
+# has_one_attached:image
 
 # users_itemsテーブル
 ｜Column       ｜Type        ｜Options                       ｜
@@ -61,13 +61,13 @@ belongs_to :purchase
 
 ### Association
 has_one :shipping_address
-has_many :users_items
+has_one :users_items
 
 # shipping_address
 
 ｜Column          ｜Type        ｜Options                       ｜
 ｜postal_cord     ｜integer     ｜null: false                   ｜
-｜prefectures     ｜integer     ｜null:false                    ｜
+｜prefectures_id  ｜integer     ｜null:false                    ｜
 ｜municipalities  ｜string      ｜null: false                   ｜
 ｜address         ｜integer     ｜null: false                   ｜
 ｜building_name   ｜string      ｜                              ｜
