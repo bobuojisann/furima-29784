@@ -2,13 +2,16 @@
 
 # usersテーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| birthday |integer | null: false |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Column            | Type   | Options     |
+| --------          | ------ | ----------- |
+| nickname          | string | null: false |
+| birthday          | date   | null: false |
+| last_name         | string | null: false |
+|first_name         | string | null: false |
+|last_name_furigana | string | null: false |
+|first_name_furigana| string | null: false |
+| email             | string | null: false |
+| password          | string | null: false |
 
 
 ### Association
@@ -28,7 +31,7 @@ has_many :items, through: :users_items
 ｜area             ｜string     ｜null: false                    ｜
 ｜date_of_shipment ｜integer    ｜null: false                    ｜
 ｜price            ｜integer    ｜null: false                    ｜
-
+｜user             ｜reference  ｜null: false, foreign_key: true ｜
 ### Association
 
 has_many :users_items
@@ -36,26 +39,29 @@ has_many :users, through: :users_items
 has_one_attached:image
 
 # users_itemsテーブル
-｜Column          ｜Type        ｜Options                       ｜
-｜user_id         ｜reference   ｜null: false, foreign_key: true｜
-｜items_id        ｜reference   ｜null: false, foreign_key: true｜
+｜Column       ｜Type        ｜Options                       ｜
+｜user         ｜reference   ｜null: false, foreign_key: true｜
+｜items        ｜reference   ｜null: false, foreign_key: true｜
 
 ### Association
 
 belongs_to :user
 belongs_to :item
-belongs_to :shipping_address
+belongs_to :purchase
 
 # purchase
 
-｜Column          ｜Type        ｜Options                       ｜
-｜----------------｜------------｜------------------------------｜
-｜card            ｜string      ｜null: false                   ｜
-｜expiration      ｜string      ｜null: false                   ｜
-｜security_cord   ｜string      ｜null: false                   ｜
+｜Column          ｜Type         ｜Options                       ｜
+｜----------------｜-------------｜------------------------------｜
+｜card            ｜integer      ｜null: false                   ｜
+｜expiration      ｜integer      ｜null: false                   ｜
+｜security_cord   ｜integer      ｜null: false                   ｜
+｜user            ｜reference    ｜null: false, foreign_key: true｜
+｜items           ｜reference    ｜null: false, foreign_key: true｜
 
 ### Association
 has_one :shipping_address
+has_many :users_items
 
 # shipping_address
 
@@ -66,10 +72,9 @@ has_one :shipping_address
 ｜address         ｜integer     ｜null: false                   ｜
 ｜building_name   ｜string      ｜                              ｜
 ｜phone_number    ｜string      ｜null: false                   ｜
-｜user            ｜reference   ｜null: false, foreign_key: true｜
-｜item            ｜reference   ｜null: false, foreign_key: true｜
+｜purchase        ｜reference   ｜null: false, foreign_key: true｜
+
 
 ### Association
 
 belongs_to :purchase
-has_many :users_items
