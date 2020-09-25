@@ -17,6 +17,7 @@
 ### Association
 
 has_many :items
+has_one :purchase
 
 # itemsテーブル
 
@@ -33,8 +34,20 @@ has_many :items
 ｜user             ｜reference  ｜null: false, foreign_key: true ｜
 ### Association
 
-belongs_to :user
+belongs_to user
+has_one :purchase
+has_one :shipping_address
 # has_one_attached:image
+
+# purchaseテーブル
+｜Column       ｜Type        ｜Options                       ｜
+｜user         ｜reference   ｜null: false, foreign_key: true｜
+｜item         ｜reference   ｜null: false, foreign_key: true｜
+
+### Association
+
+belongs_to :user
+belongs_to :item
 
 
 # shipping_address
@@ -46,6 +59,10 @@ belongs_to :user
 ｜address         ｜integer     ｜null: false                   ｜
 ｜building_name   ｜string      ｜                              ｜
 ｜phone_number    ｜string      ｜null: false                   ｜
+｜item            ｜reference   ｜null: false, foreign_key: true｜
 
+### Association
+
+belongs to item
 
 
