@@ -16,8 +16,7 @@
 
 ### Association
 
-has_many :users_items
-has_many :items, through: :users_items
+has_many :items
 
 # itemsテーブル
 
@@ -34,34 +33,9 @@ has_many :items, through: :users_items
 ｜user             ｜reference  ｜null: false, foreign_key: true ｜
 ### Association
 
-has_many :users_items
-has_many :users, through: :users_items
+belongs_to :user
 # has_one_attached:image
 
-# users_itemsテーブル
-｜Column       ｜Type        ｜Options                       ｜
-｜user         ｜reference   ｜null: false, foreign_key: true｜
-｜items        ｜reference   ｜null: false, foreign_key: true｜
-
-### Association
-
-belongs_to :user
-belongs_to :item
-belongs_to :purchase
-
-# purchase
-
-｜Column          ｜Type         ｜Options                       ｜
-｜----------------｜-------------｜------------------------------｜
-｜card            ｜integer      ｜null: false                   ｜
-｜expiration      ｜integer      ｜null: false                   ｜
-｜security_cord   ｜integer      ｜null: false                   ｜
-｜user            ｜reference    ｜null: false, foreign_key: true｜
-｜items           ｜reference    ｜null: false, foreign_key: true｜
-
-### Association
-has_one :shipping_address
-has_one :users_items
 
 # shipping_address
 
@@ -72,9 +46,6 @@ has_one :users_items
 ｜address         ｜integer     ｜null: false                   ｜
 ｜building_name   ｜string      ｜                              ｜
 ｜phone_number    ｜string      ｜null: false                   ｜
-｜purchase        ｜reference   ｜null: false, foreign_key: true｜
 
 
-### Association
 
-belongs_to :purchase
