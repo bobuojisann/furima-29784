@@ -17,7 +17,7 @@
 ### Association
 
 has_many :items
-has_one :purchase
+has_many :purchase
 
 # itemsテーブル
 
@@ -28,7 +28,7 @@ has_one :purchase
 ｜category_id      ｜integer    ｜null: false                    ｜
 ｜product_condition｜integer    ｜null: false                    ｜
 ｜delivery_fee     ｜integer    ｜null: false                    ｜
-｜area             ｜string     ｜null: false                    ｜
+｜area_id          ｜integer    ｜null: false                    ｜
 ｜date_of_shipment ｜integer    ｜null: false                    ｜
 ｜price            ｜integer    ｜null: false                    ｜
 ｜user             ｜reference  ｜null: false, foreign_key: true ｜
@@ -36,10 +36,9 @@ has_one :purchase
 
 belongs_to user
 has_one :purchase
-has_one :shipping_address
 # has_one_attached:image
 
-# purchaseテーブル
+# purchasesテーブル
 ｜Column       ｜Type        ｜Options                       ｜
 ｜user         ｜reference   ｜null: false, foreign_key: true｜
 ｜item         ｜reference   ｜null: false, foreign_key: true｜
@@ -48,21 +47,21 @@ has_one :shipping_address
 
 belongs_to :user
 belongs_to :item
+has_one :shipping_address
 
-
-# shipping_address
+# shipping_addresses
 
 ｜Column          ｜Type        ｜Options                       ｜
-｜postal_cord     ｜integer     ｜null: false                   ｜
+｜postal_cord     ｜string      ｜null: false                   ｜
 ｜prefectures_id  ｜integer     ｜null:false                    ｜
 ｜municipalities  ｜string      ｜null: false                   ｜
 ｜address         ｜integer     ｜null: false                   ｜
 ｜building_name   ｜string      ｜                              ｜
 ｜phone_number    ｜string      ｜null: false                   ｜
-｜item            ｜reference   ｜null: false, foreign_key: true｜
+｜purchase        ｜reference   ｜null: false, foreign_key: true｜
 
 ### Association
+belongs_to :purchase
 
-belongs to item
 
 
