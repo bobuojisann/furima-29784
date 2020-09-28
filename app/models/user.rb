@@ -13,7 +13,7 @@ class User < ApplicationRecord
     validates :last_name_furigana, format: { with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width katakana characters."}
     validates :first_name_furigana, format: { with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width katakana characters."}
     validates :birthday
-    validates :encrypted_password, length:{maximum: 6}
+    validates :password, length:{minimum: 6}
   end
 end
 
