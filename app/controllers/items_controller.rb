@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    #@items = Item.all
+    # @items = Item.all
   end
 
   def show
