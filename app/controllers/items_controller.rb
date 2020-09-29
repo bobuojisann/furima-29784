@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
-
   def index
-    
   end
 
   def new
@@ -9,11 +7,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-
   end
 
   def create
-    
   end
 
   def edit
@@ -24,5 +20,4 @@ class ItemsController < ApplicationController
 
   def update
   end
-
 end
