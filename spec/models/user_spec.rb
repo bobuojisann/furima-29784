@@ -10,33 +10,8 @@ RSpec.describe User, type: :model do
       it '全てのフォームが空でなければ登録できる' do
         expect(@user).to be_valid
       end
-
-      it 'first_nameが全角、漢字、カタカナ、ひらがなだと登録できる' do
-        @user.first_name = 'たカ人'
-        expect(@user).to be_valid
-      end
-
-      it 'last_nameが全角、漢字、カタカナ、ひらがなだと登録できる' do
-        @user.last_name = 'しン助'
-        expect(@user).to be_valid
-      end
-
-      it 'first_name_furiganaがカタカナだと登録できる' do
-        @user.first_name_furigana = 'タカジン'
-        expect(@user).to be_valid
-      end
-
-      it 'last_name_furiganaがカタカナだと登録できる' do
-        @user.first_name_furigana = 'シンスケ'
-        expect(@user).to be_valid
-      end
-
-      it 'passwordが6文字以上であれば登録できる' do
-        @user.password = '000000'
-        @user.password_confirmation = '000000'
-        expect(@user).to be_valid
-      end
     end
+
     context '新規登録がうまくいかない時' do
       it 'nicknameが空だと登録できない' do
         @user.nickname = ''
@@ -55,7 +30,13 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
-
+      it 'emailが同じメールアドレスだと登録できない' do
+      @user.save
+      another_user = FactoryBot.build(:user)
+      another_user.email = @user.email
+      another_user.valid?
+      expect(another_user.errors.full_messages).to include("Email has already been taken")
+      end
       it 'first_nameが空だと登録できない' do
         @user.first_name = ''
         @user.valid?
