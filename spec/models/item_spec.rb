@@ -26,41 +26,42 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Comment can't be blank")
       end
       it 'category_idが--だと登録できない' do
-        @item.category_id = ""
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is not a number")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it 'product_condition_idが--だと登録できない' do
-        @item.product_condition_id = ""
+        @item.product_condition_id = 1
         @item.valid?
-
-        expect(@item.errors.full_messages).to include("Product condition is not a number")
+        expect(@item.errors.full_messages).to include("Product condition must be other than 1")
       end
       it 'delivery_fee_idが--だと登録できない' do
-        @item.delivery_fee_id= ""
+        @item.delivery_fee_id= 1
         @item.valid?
-     
-        expect(@item.errors.full_messages).to include("Delivery fee is not a number")
+        expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
       end
       it 'area_idが--だと登録できない' do
-        @item.area_id = ""
+        @item.area_id = 1
         @item.valid?
-
-        expect(@item.errors.full_messages).to include("Area is not a number")
+        expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
       it 'date_of_shipment_idが--だと登録できない' do
-        @item.date_of_shipment_id = ""
+        @item.date_of_shipment_id = 1
         @item.valid?
-
-        expect(@item.errors.full_messages).to include("Date of shipment is not a number")
+        expect(@item.errors.full_messages).to include("Date of shipment must be other than 1")
       end
       it 'priceが空だと登録できない' do
         @item.price = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      it 'priceが300~9,999,999の値でないと登録できない' do
+      it 'priceが299以下だと登録できない' do
         @item.price = "100"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Price Out of setting range")
+      end
+      it'priceが10,000,000以上だと登録できない' do
+        @item.price = "100000000"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Price Out of setting range")
       end

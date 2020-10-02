@@ -10,7 +10,6 @@ window.addEventListener("load", function price () {
   price_tax.innerHTML = name
   console.log(price_tax)
   let sales_profit = document.getElementById("profit");
-  // sales_profit.innerHTML = Math.floor(price_tax + price_value);
   sales_profit.innerHTML = price_value - name
   });
 })
