@@ -25,10 +25,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy
-      redirect_to root_path
-    else
-      rendre :show
+    #if @item.destroy
+     # redirect_to root_path
+    #else
+      #rendre :show
     end
   end
 
