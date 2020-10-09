@@ -19,62 +19,61 @@ RSpec.describe UserItem, type: :model do
 
     context '商品購入がうまく行かない時' do
       it 'numberが空のとき購入できない' do
-        @user_item.number= ""
+        @user_item.number = ''
         @user_item.valid?
         binding.pry
-        expect(@user_item.errors.full_messages).to include()
+        expect(@user_item.errors.full_messages).to include
       end
       it 'cvcが空のとき購入できない' do
-        @user_item.cvc= ""
+        @user_item.cvc = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include()
+        expect(@user_item.errors.full_messages).to include
       end
       it 'exp_monthが空のとき購入できない' do
-        @user_item.exp_month= ""
+        @user_item.exp_month = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include()
+        expect(@user_item.errors.full_messages).to include
       end
       it 'exp_yearが空のとき購入できない' do
-        @user_item.exp_year= ""
+        @user_item.exp_year = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include()
+        expect(@user_item.errors.full_messages).to include
       end
       it 'postal_cordが空のとき購入できない' do
-        @user_item.postal_cord= ''
+        @user_item.postal_cord = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Postal cord can't be blank","Postal cord is invalid. Include hyphen(-)")
+        expect(@user_item.errors.full_messages).to include("Postal cord can't be blank", 'Postal cord is invalid. Include hyphen(-)')
       end
-      it 'postal_cordにハイフンがないとき購入できない'do
+      it 'postal_cordにハイフンがないとき購入できない' do
         @user_item.postal_cord = '1144888'
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Postal cord is invalid. Include hyphen(-)")
+        expect(@user_item.errors.full_messages).to include('Postal cord is invalid. Include hyphen(-)')
       end
       it 'municipalitiesが空のとき購入できない' do
-        @user_item.municipalities= ''
+        @user_item.municipalities = ''
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Municipalities can't be blank")
       end
       it 'addressが空のとき購入できない' do
-        @user_item.address= ''
+        @user_item.address = ''
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Address can't be blank")
       end
       it 'phone_numberが空のとき購入できない' do
-        @user_item.phone_number= ''
+        @user_item.phone_number = ''
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'tokenが空のとき購入できない' do
-        @user_item.token= ''
+        @user_item.token = ''
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Token can't be blank")
       end
       it 'prefectures_idが空のとき購入できない' do
-        @user_item.prefectures_id= ''
+        @user_item.prefectures_id = ''
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Prefectures can't be blank")
       end
-    
     end
   end
 end

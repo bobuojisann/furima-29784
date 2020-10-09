@@ -5,9 +5,8 @@ class PurchasesController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    @user_item =UserItem.new
+    @user_item = UserItem.new
   end
-
 
   def create
     # binding.pry
@@ -15,7 +14,7 @@ class PurchasesController < ApplicationController
     if @user_item.valid?
       pay_item
       @user_item.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render :index
     end
@@ -25,19 +24,17 @@ class PurchasesController < ApplicationController
 
   def purchase_params
     params.require(:user_item).permit(:postal_cord, :prefectures_id, :municipalities, :address, :building_name, :phone_number).merge(user_id: current_user.id, token: params[:token], item_id: params[:item_id])
-
   end
 
   def pay_item
     @item = Item.find(params[:item_id])
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: @item.price,
-        card: purchase_params[:token],
-        currency: 'jpy'
-      )
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: purchase_params[:token],
+      currency: 'jpy'
+    )
   end
-
 
   # def purchased_item_redirect
   #   @item = Item.find(params[:item_id])
@@ -50,15 +47,11 @@ class PurchasesController < ApplicationController
 
   def purchased_item_redirect
     @item = Item.find(params[:item_id])
-    if @item.purchase
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.purchase
   end
 
-    def item_user_redirect
-      @item = Item.find(params[:item_id])
-      unless @item.user_id != current_user.id
-        redirect_to root_path
-      end
-    end
+  def item_user_redirect
+    @item = Item.find(params[:item_id])
+    redirect_to root_path unless @item.user_id != current_user.id
+  end
 end
