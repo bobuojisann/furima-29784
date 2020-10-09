@@ -1,9 +1,5 @@
 FactoryBot.define do
   factory :user_item do
-    number                         { '424242424242424242' }
-    cvc                            { '123' }
-    exp_month                      { '4' }
-    exp_year                       { '23' }
     postal_cord                    { '111-4333' }
     municipalities                 { '茨城市' }
     address                        { '13-13' }

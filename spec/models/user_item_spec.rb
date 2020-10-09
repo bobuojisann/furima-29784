@@ -18,27 +18,6 @@ RSpec.describe UserItem, type: :model do
     end
 
     context '商品購入がうまく行かない時' do
-      it 'numberが空のとき購入できない' do
-        @user_item.number = ''
-        @user_item.valid?
-        binding.pry
-        expect(@user_item.errors.full_messages).to include
-      end
-      it 'cvcが空のとき購入できない' do
-        @user_item.cvc = ''
-        @user_item.valid?
-        expect(@user_item.errors.full_messages).to include
-      end
-      it 'exp_monthが空のとき購入できない' do
-        @user_item.exp_month = ''
-        @user_item.valid?
-        expect(@user_item.errors.full_messages).to include
-      end
-      it 'exp_yearが空のとき購入できない' do
-        @user_item.exp_year = ''
-        @user_item.valid?
-        expect(@user_item.errors.full_messages).to include
-      end
       it 'postal_cordが空のとき購入できない' do
         @user_item.postal_cord = ''
         @user_item.valid?
@@ -71,6 +50,11 @@ RSpec.describe UserItem, type: :model do
       end
       it 'prefectures_idが空のとき購入できない' do
         @user_item.prefectures_id = ''
+        @user_item.valid?
+        expect(@user_item.errors.full_messages).to include("Prefectures can't be blank")
+      end
+      it 'prefectures_idが１のとき購入できない' do
+        @user_item.prefectures_id = 1
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Prefectures can't be blank")
       end
