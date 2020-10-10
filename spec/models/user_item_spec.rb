@@ -43,15 +43,15 @@ RSpec.describe UserItem, type: :model do
         @user_item.valid?
         expect(@user_item.errors.full_messages).to include("Phone number can't be blank")
       end
-      it 'phone_numberにハイフンが入っていると登録できない'do
+      it 'phone_numberにハイフンが入っていると登録できない' do
         @user_item.phone_number = '06-666-4444'
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Phone number Peice Half-width number")
+        expect(@user_item.errors.full_messages).to include('Phone number Peice Half-width number')
       end
-      it 'phone_numberが12桁以上だと登録できない'do
-      @user_item.phone_number = '090333300000'
-      @user_item.valid?
-      expect(@user_item.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      it 'phone_numberが12桁以上だと登録できない' do
+        @user_item.phone_number = '090333300000'
+        @user_item.valid?
+        expect(@user_item.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
       it 'tokenが空のとき購入できない' do
         @user_item.token = ''
