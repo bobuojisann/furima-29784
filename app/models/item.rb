@@ -12,11 +12,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :comment
-    # validates :category_id
-    # validates :product_condition_id
-    # validates :delivery_fee_id
-    # validates :area_id
-    # validates :date_of_shipment_id
+    validates :image
     validates :price, format: { with: /\A[0-9]+\z/, message: 'Peice Half-width number' }
   end
   with_options numericality: { other_than: 1 } do
