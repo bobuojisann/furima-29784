@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        Password: パスワード
+        birthday: 生年月日
+        last_name: 名前
+        first_name: 名字
+        last_name_furigana: 名前カナ
+        first_name_furigana: 名字カナ
+      item:
+        name: 商品名
+        comment: コメント
+        price: 販売価格
+        image: 画像
+        date_of_shipment_id: 発送までの日数
+        category_id: カテゴリー
+        product_condition_id: 商品の状態
+        delivery_fee_id: 配送料の負担
+        area_id: 地域
+
+  attributes:
+    address: 番地
+    postal_cord: 郵便番号
+    municipalities: 市区町村
+    phone_number: 電話番号
+    prefectures_id: 都道府県
+    
+
