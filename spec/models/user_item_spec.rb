@@ -21,52 +21,52 @@ RSpec.describe UserItem, type: :model do
       it 'postal_cordが空のとき購入できない' do
         @user_item.postal_cord = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Postal cord can't be blank", 'Postal cord is invalid. Include hyphen(-)')
+        expect(@user_item.errors.full_messages).to include("郵便番号を入力してください", "郵便番号を入力してください")
       end
       it 'postal_cordにハイフンがないとき購入できない' do
         @user_item.postal_cord = '1144888'
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include('Postal cord is invalid. Include hyphen(-)')
+        expect(@user_item.errors.full_messages).to include("郵便番号を入力してください")
       end
       it 'municipalitiesが空のとき購入できない' do
         @user_item.municipalities = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Municipalities can't be blank")
+        expect(@user_item.errors.full_messages).to include("市区町村を入力してください")
       end
       it 'addressが空のとき購入できない' do
         @user_item.address = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Address can't be blank")
+        expect(@user_item.errors.full_messages).to include("番地を入力してください")
       end
       it 'phone_numberが空のとき購入できない' do
         @user_item.phone_number = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Phone number can't be blank")
+        expect(@user_item.errors.full_messages).to include("電話番号を入力してください", "電話番号を入力してください")
       end
       it 'phone_numberにハイフンが入っていると登録できない' do
         @user_item.phone_number = '06-666-4444'
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include('Phone number Peice Half-width number')
+        expect(@user_item.errors.full_messages).to include("電話番号を入力してください")
       end
       it 'phone_numberが12桁以上だと登録できない' do
         @user_item.phone_number = '090333300000'
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+        expect(@user_item.errors.full_messages).to include("電話番号は11文字以内で入力してください")
       end
       it 'tokenが空のとき購入できない' do
         @user_item.token = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Token can't be blank")
+        expect(@user_item.errors.full_messages).to include("Tokenを入力してください")
       end
       it 'prefectures_idが空のとき購入できない' do
         @user_item.prefectures_id = ''
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Prefectures can't be blank")
+        expect(@user_item.errors.full_messages).to include("都道府県を入力してください")
       end
       it 'prefectures_idが１のとき購入できない' do
         @user_item.prefectures_id = 1
         @user_item.valid?
-        expect(@user_item.errors.full_messages).to include("Prefectures can't be blank")
+        expect(@user_item.errors.full_messages).to include("都道府県を入力してください")
       end
     end
   end
